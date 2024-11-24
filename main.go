@@ -17,6 +17,11 @@ const (
 	bRCtrl  = machine.D5 // right magna, secondary
 	bLaunch = machine.D7 // plunger, launch
 
+	// meta buttons
+	bEsc  = machine.D8  // terminate execution of a table
+	bOne  = machine.D9  // player 1 start
+	bFive = machine.D10 // insert coin
+
 	// nudge
 	NUDGE_THRESHOLD   = int32(400_000)
 	NUDGE_SKIP_BUDGET = 5
@@ -50,12 +55,18 @@ func main() {
 	bRShift.Configure(bCnf)
 	bRCtrl.Configure(bCnf)
 	bLaunch.Configure(bCnf)
+	bEsc.Configure(bCnf)
+	bOne.Configure(bCnf)
+	bFive.Configure(bCnf)
 
 	lShiftPress := false
 	lCtrlPress := false
 	rShiftPress := false
 	rCtrlPress := false
 	launchPress := false
+	escPress := false
+	onePress := false
+	fivePress := false
 
 	nudgeLeftPress := false
 	nudgeRightPress := false
@@ -100,7 +111,7 @@ func main() {
 				kb.Up(keyboard.KeyEnter)
 			}
 			launchPress = false
-		} else if !lShiftPress {
+		} else if !launchPress {
 			launchPress = true
 			fmt.Println("KeyEnter")
 			if err := kb.Down(keyboard.KeyEnter); nil != err {
@@ -164,7 +175,51 @@ func main() {
 			}
 		}
 
-		time.Sleep(time.Millisecond * 50)
+		// escape
+		if bEsc.Get() {
+			if escPress {
+				kb.Up(keyboard.KeyEsc)
+			}
+			escPress = false
+		} else if !escPress {
+			escPress = true
+			fmt.Println("KeyEsc")
+			if err := kb.Down(keyboard.KeyEsc); nil != err {
+				fmt.Printf("error pressing escape: %s\n", err.Error())
+			}
+		}
+
+		// one
+		if bOne.Get() {
+			if onePress {
+				kb.Up(keyboard.Key1)
+			}
+			onePress = false
+		} else if !onePress {
+			onePress = true
+			fmt.Println("Key1")
+			if err := kb.Down(keyboard.Key1); nil != err {
+				fmt.Printf("error pressing 1: %s\n", err.Error())
+			}
+		}
+
+		// five
+		if bFive.Get() {
+			if fivePress {
+				kb.Up(keyboard.Key5)
+			}
+			fivePress = false
+		} else if !fivePress {
+			fivePress = true
+			fmt.Println("Key5")
+			if err := kb.Down(keyboard.Key5); nil != err {
+				fmt.Printf("error pressing 5: %s\n", err.Error())
+			}
+		}
+
+		// time.Sleep(time.Millisecond * 50)
+		// try lowering the sleep cycle
+		time.Sleep(time.Millisecond * 16)
 	}
 }
 
