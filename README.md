@@ -28,3 +28,29 @@ It is probably about 70% accurate now, which is almost good enough as I was simp
 
 - Implement a couple of more buttons to support 'insert coins' and the 'player 1 start'.
 - Improve the nudge detection
+
+
+### Editing the code
+
+It is highly recommened to use tinygo-edit as it informs `gopls` about how to reference the custom libraries that tinygo overlays on top of go itself:
+
+https://github.com/sago35/tinygo-edit
+
+  go install github.com/sago35/tinygo-edit@latest
+
+  tinygo-edit --editor vi --wait --target arduino-nano33
+
+  tinygo-edit --editor nvim --wait --target arduino-nano33
+
+then :e main.go'
+
+#### Manual testing
+
+While the device is plugged in you can execute `tinygo monitor` to see what might be logged to STDOUT.
+
+#### Flashing the arduino-nano33
+
+Flash your device with:
+
+  tinygo flash -target=arduino-nano33
+
