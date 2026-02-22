@@ -29,6 +29,31 @@ It is probably about 70% accurate now, which is almost good enough as I was simp
 - Implement a couple of more buttons to support 'insert coins' and the 'player 1 start'.
 - Improve the nudge detection
 
+### Pin usage layout
+
+
+```
+    |  LEFT | PCB | RIGHT |
+    -----------------------
+    |  D13  |     |  D12  |
+    |  3V3  |     |  D11  |
+    |  AREF |     |  D10  | - Insert Coin (Number 5)
+    |  D14  |     |  D9   | - Player 1 Start (Number 1)
+    |  D15  |     |  D8   | - Terminate (ESC)
+    |  D16  |     |  D7   |
+    |  D17  |     |  D6   | 
+    |  D18  |     |  D5   | - Right Magna Save (Right CTRL)
+    |  D19  |     |  D4   | - Right Flipper (Right Shift)
+    |  D20  |     |  D3   | - Left Magna Save (Left CTRL)
+    |  D21  |     |  D2   | - Left Flipper (Left Shift)
+    |  5V   |     | GND1  |
+    | RESET |     | RESET |
+    |  GND2 |     |  RX   |
+    |  VIN  |     |  TX   |
+```
+
+In my own wiring I used right column ground, 'GND1', to connect the flipper buttons and left column 'GND2' to connect the remaining inputs - ESC, 1, 5.
+
 
 ### Editing the code
 
