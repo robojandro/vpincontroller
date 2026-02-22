@@ -40,7 +40,7 @@ It is probably about 70% accurate now, which is almost good enough as I was simp
     |  AREF |     |  D10  | - Insert Coin (Number 5)
     |  D14  |     |  D9   | - Player 1 Start (Number 1)
     |  D15  |     |  D8   | - Terminate (ESC)
-    |  D16  |     |  D7   |
+    |  D16  |     |  D7   | - Launch (Enter)
     |  D17  |     |  D6   | 
     |  D18  |     |  D5   | - Right Magna Save (Right CTRL)
     |  D19  |     |  D4   | - Right Flipper (Right Shift)
@@ -52,7 +52,7 @@ It is probably about 70% accurate now, which is almost good enough as I was simp
     |  VIN  |     |  TX   |
 ```
 
-In my own wiring I used right column ground, 'GND1', to connect the flipper buttons and left column 'GND2' to connect the remaining inputs - ESC, 1, 5.
+In my own wiring I used right column ground, 'GND1', to connect the flipper and plunger buttons and left column 'GND2' to connect the remaining inputs - ESC, 1, 5.
 
 
 ### Editing the code
